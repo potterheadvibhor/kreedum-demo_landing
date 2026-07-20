@@ -477,8 +477,9 @@ function Locations() {
       name: "Kreedum – Second Store",
       tag: "General Sports Products",
       address: "Aminabad Market, Lucknow, UP — address to confirm",
-      phone: "976542123",
-      rating: null,
+      phone: "+91 80819 79754",
+      hours: "10:30 AM – 9:00 PM (Tue till 5 PM, Thu till 7 PM)",
+      rating: "4.7★ · 1,600+ reviews",
     },
   ];
   return (
