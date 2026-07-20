@@ -217,7 +217,7 @@ function Hero() {
             <span style={{ color: "#8FADFF" }}>every kind of play.</span>
           </h1>
           <p className="font-body text-base md:text-lg mb-9 max-w-md" style={{ color: "rgba(255,255,255,0.75)" }}>
-            Sports equipment, apparel, footwear, fitness machines, and full
+            Sports equipment, apparell, footwear, fitness machines, and full
             ground infrastructure — trusted by athletes, schools, and
             institutions across Lucknow.
           </p>
