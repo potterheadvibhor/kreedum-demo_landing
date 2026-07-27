@@ -548,17 +548,18 @@ function Locations() {
 
 
 function ContactForm() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
+ const [form, setForm] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  inquiryType: "",
+  message: "",
+});
 
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const WHATSAPP_NUMBER = "7080407862"; // Include country code
+  const WHATSAPP_NUMBER = "7084144623"; // Include country code
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -603,10 +604,13 @@ function ContactForm() {
     setErrors({});
 
     const text =
-      `Hi, I'm ${form.name}.\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone}\n` +
-      `Message: ${form.message}`;
+`New Contact Request
+
+Name: ${form.name}
+Phone: ${form.phone}
+${form.email ? `Email: ${form.email}\n` : ""}Inquiry Type: ${form.inquiryType}
+Message:
+${form.message}`;
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
       text
@@ -759,7 +763,31 @@ function ContactForm() {
                 placeholder="you@example.com"
               />
             </div>
+<div>
+  <label
+    className="font-mono text-xs uppercase tracking-wide block mb-2"
+    style={{ color: "rgba(255,255,255,0.6)" }}
+  >
+    Priority
+  </label>
 
+  <select
+    name="priority"
+    value={form.priority}
+    onChange={handleChange}
+    className="w-full px-4 py-3 rounded-lg font-body text-sm kr-focus"
+    style={{
+      backgroundColor: "rgba(255,255,255,0.95)",
+      color: C.navy,
+    }}
+  >
+   <option value="General Inquiry">General Inquiry</option>
+    <option value="Product Information">Product Information</option>
+    <option value="Retail Order">Retail Order</option>
+    <option value="Bulk Order">Bulk Order</option>
+    <option value="Urgent">Urgent</option>
+  </select>
+</div>
             <div>
               <label
                 className="font-mono text-xs uppercase tracking-wide block mb-2"
@@ -809,26 +837,73 @@ function ContactForm() {
   );
 }
 
+const SOCIAL_LINKS = [
+  {
+    name: "Facebook",
+    href: "https://facebook.com/kreedumsports",
+    path: "M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/kreedum_official/?hl=en",
+    path: "M12 2c-2.72 0-3.06.01-4.12.06-1.06.05-1.79.22-2.43.47a4.9 4.9 0 0 0-1.77 1.15A4.9 4.9 0 0 0 2.53 5.45c-.25.64-.42 1.37-.47 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.15 1.77.55.55 1.11.9 1.77 1.15.64.25 1.37.42 2.43.47C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.06-.05 1.79-.22 2.43-.47a4.9 4.9 0 0 0 1.77-1.15 4.9 4.9 0 0 0 1.15-1.77c.25-.64.42-1.37.47-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.06-.22-1.79-.47-2.43a4.9 4.9 0 0 0-1.15-1.77A4.9 4.9 0 0 0 18.55.53c-.64-.25-1.37-.42-2.43-.47C15.06.01 14.72 0 12 0zm0 1.98c2.67 0 2.99.01 4.04.06.98.04 1.5.2 1.85.34.47.18.8.4 1.15.75.35.35.57.68.75 1.15.14.36.3.87.34 1.85.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.98-.2 1.5-.34 1.85-.18.47-.4.8-.75 1.15-.35.35-.68.57-1.15.75-.36.14-.87.3-1.85.34-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.98-.04-1.5-.2-1.85-.34a3.1 3.1 0 0 1-1.15-.75 3.1 3.1 0 0 1-.75-1.15c-.14-.36-.3-.87-.34-1.85C1.99 14.99 1.98 14.67 1.98 12s.01-2.99.06-4.04c.04-.98.2-1.5.34-1.85.18-.47.4-.8.75-1.15.35-.35.68-.57 1.15-.75.36-.14.87-.3 1.85-.34C9.01 3.99 9.33 3.98 12 3.98zm0 3.37a4.65 4.65 0 1 0 0 9.3 4.65 4.65 0 0 0 0-9.3zm0 7.67a3.02 3.02 0 1 1 0-6.04 3.02 3.02 0 0 1 0 6.04zm5.92-7.86a1.09 1.09 0 1 1-2.17 0 1.09 1.09 0 0 1 2.17 0z",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/kreedum-international-pvt-ltd/",
+    path: "M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.73C24 .77 23.2 0 22.22 0z",
+  },
+  {
+    name: "Twitter",
+    href: "https://x.com/kreedumsports",
+    path: "M18.9 2h3.3l-7.2 8.2L23.5 22h-6.6l-5.2-6.8L5.7 22H2.4l7.7-8.8L1.5 2h6.8l4.7 6.2L18.9 2zm-1.16 18h1.83L7.34 3.9H5.38L17.74 20z",
+  },
+];
 
-
+function SocialLinks() {
+  return (
+    <div className="flex items-center gap-4">
+      {SOCIAL_LINKS.map((s) => (
+        <a
+          key={s.name}
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={s.name}
+          className="w-9 h-9 rounded-full flex items-center justify-center transition-opacity hover:opacity-70"
+          style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.85)" xmlns="http://www.w3.org/2000/svg">
+            <path d={s.path} />
+          </svg>
+        </a>
+      ))}
+    </div>
+  );
+}
 
 function Footer() {
   return (
     <footer className="py-12" style={{ backgroundColor: C.navy }}>
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-2">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+        <div className="flex items-center gap-2 justify-center md:justify-start">
           <img src={LOGO_SRC} alt="Kreedum logo" className="w-7 h-7" />
           <span className="font-display font-semibold text-sm" style={{ color: C.white }}>
             Kreedum<span style={{ color: "#8FADFF" }}>Sports</span>
           </span>
         </div>
-        <p className="font-body text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+        <div className="flex justify-center">
+          <SocialLinks />
+        </div>
+        <p className="font-body text-xs text-center md:text-right" style={{ color: "rgba(255,255,255,0.45)" }}>
           © {new Date().getFullYear()} Kreedum International Private Limited. Aminabad, Lucknow.
         </p>
       </div>
     </footer>
   );
 }
+
+
 
 export default function KreedumSportsLanding() {
   return (
