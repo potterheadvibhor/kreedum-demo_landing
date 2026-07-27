@@ -17,6 +17,7 @@ const C = {
 const LOGO_SRC = "data:image/jpeg;base64,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";
 
 /* Free-to-use stock photos (Unsplash License — free for commercial use, no attribution required) */
+/* Free-to-use stock photos (Unsplash License — free for commercial use, no attribution required) */
 const PHOTOS = {
   storefront:
     "https://images.unsplash.com/photo-1646504632442-6cacb1858bd6?fm=jpg&q=80&w=1200&auto=format&fit=crop",
@@ -27,14 +28,33 @@ const PHOTOS = {
   products:
     "https://images.unsplash.com/photo-1729843352938-0e10fbf96585?fm=jpg&q=80&w=1200&auto=format&fit=crop",
   extra:
-    "https://images.unsplash.com/photo-1515762909411-f9aea3cb6969?fm=jpg&q=80&w=1200&auto=format&fit=crop",
+    "https://plus.unsplash.com/premium_photo-1663127429325-3acefe582da5?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 };
+
+/*
+ * Generic placeholder photos for the gallery slider, one per product category.
+ * NOTE: these are stand-ins (picsum.photos, seeded so they stay stable) — same
+ * "placeholder, to replace with real store photography" status as the rest of
+ * the site's images per the README. Swap `src` for real product photos whenever
+ * you have them.
+ */
+const CATEGORY_PHOTOS = [
+  { emoji: "🏏", label: "Cricket", desc: "Bats, balls, pads", src: "https://plus.unsplash.com/premium_photo-1679917506585-2c7b89054610?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { emoji: "🏃", label: "Training", desc: "Fitness gear", src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3ltZXF1aXBtZW50fGVufDB8fDB8fHww" },
+  { emoji: "🏋️", label: "Fitness", desc: "Dumbbells & gym equipment", src: PHOTOS.interior2 },
+  { emoji: "⚽", label: "Football", desc: "Footballs & boots", src: "https://plus.unsplash.com/premium_photo-1663133623858-f9573e2e587b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { emoji: "🏀", label: "Basketball", desc: "Basketballs", src: "https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { emoji: "🏸", label: "Badminton", desc: "Rackets", src: "https://plus.unsplash.com/premium_photo-1723867379328-6497df2470e4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFkbWludG9uJTIwZXF1aXBtZW50fGVufDB8fDB8fHww" },
+  { emoji: "🎾", label: "Tennis", desc: "Rackets", src: "https://plus.unsplash.com/premium_photo-1666913667082-c1fecc45275d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVubmlzJTIwZXF1aXBtZW50fGVufDB8fDB8fHww" },
+  { emoji: "🏐", label: "Volleyball", desc: "Volleyballs", src: "https://plus.unsplash.com/premium_photo-1708558511853-8eb332fafb8b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dm9sbGV5YmFsbCUyMGVxdWlwbWVudHxlbnwwfHwwfHx8MA%3D%3D" },
+  { emoji: "👟", label: "Footwear", desc: "Sports shoes", src: PHOTOS.extra },
+];
 
 const NAV_LINKS = [
   { id: "about", label: "About" },
   { id: "products", label: "Products" },
   { id: "infrastructure", label: "Infrastructure" },
-  { id: "gallery", label: "Gallery" },
+  { id: "gallery", label: "Inside Kreedum Sports" },
   { id: "locations", label: "Locations" },
   { id: "contact", label: "Contact" },
 ];
@@ -74,6 +94,9 @@ function GlobalStyle() {
       .kr-focus:focus-visible {
         outline: 3px solid ${C.blue};
         outline-offset: 3px;
+      }
+        .kr-scroll-hide::-webkit-scrollbar {
+        display: none;
       }
       @media (prefers-reduced-motion: reduce) {
         * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
@@ -435,27 +458,114 @@ function Infrastructure() {
 }
 
 function Gallery() {
-  const photos = [
-    { src: PHOTOS.storefront, alt: "Colourful sports equipment on display" },
-    { src: PHOTOS.interior2, alt: "Pair of dumbbells" },
-    { src: PHOTOS.extra, alt: "Footwear on a shoe rack" },
-  ];
+  const trackRef = React.useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollToIndex = (i) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const clamped = Math.max(0, Math.min(i, CATEGORY_PHOTOS.length - 1));
+    const card = track.children[clamped];
+    if (card) {
+      track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: "smooth" });
+    }
+  };
+
+  const handlePrev = () => scrollToIndex(activeIndex - 1);
+  const handleNext = () => scrollToIndex(activeIndex + 1);
+
+  const handleScroll = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    let closest = 0;
+    let closestDist = Infinity;
+    Array.from(track.children).forEach((child, i) => {
+      const dist = Math.abs(child.offsetLeft - track.offsetLeft - track.scrollLeft);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = i;
+      }
+    });
+    setActiveIndex(closest);
+  };
+
   return (
-    <section id="gallery" className="py-24 md:py-32" style={{ backgroundColor: C.white }}>
+    <section id="gallery" className="py-24 md:py-32 overflow-hidden" style={{ backgroundColor: C.white }}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="max-w-xl mb-14">
-          <div className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: C.blue }}>
-            Gear & Ground
-          </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl" style={{ color: C.navy }}>
-            From the gym floor to the playing field.
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {photos.map((p) => (
-            <div key={p.alt} className="diag-card overflow-hidden rounded-2xl">
-              <img src={p.src} alt={p.alt} className="w-full h-64 object-cover transition-transform hover:scale-105 duration-500" />
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div className="max-w-xl">
+            <div className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: C.blue }}>
+              Gear & Ground
             </div>
+            <h2 className="font-display font-bold text-3xl md:text-4xl" style={{ color: C.navy }}>
+              Everything you need, in every sport.
+            </h2>
+          </div>
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous"
+              className="w-11 h-11 rounded-full flex items-center justify-center kr-focus transition-opacity hover:opacity-70"
+              style={{ backgroundColor: C.tint, color: C.blueDark }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next"
+              className="w-11 h-11 rounded-full flex items-center justify-center kr-focus transition-opacity hover:opacity-70"
+              style={{ backgroundColor: C.blue, color: C.white }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={trackRef}
+          onScroll={handleScroll}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 kr-scroll-hide"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {CATEGORY_PHOTOS.map((p) => (
+            <div
+              key={p.label}
+              className="diag-card overflow-hidden rounded-2xl flex-shrink-0 snap-start relative"
+              style={{ width: "280px" }}
+            >
+              <img src={p.src} alt={`${p.label} — ${p.desc}`} className="w-full h-72 object-cover transition-transform hover:scale-105 duration-500" />
+              <div
+                className="absolute bottom-0 left-0 right-0 px-5 py-4"
+                style={{ background: "linear-gradient(to top, rgba(14,26,61,0.85), rgba(14,26,61,0))" }}
+              >
+                <div className="font-display font-semibold text-base flex items-center gap-2" style={{ color: C.white }}>
+                  <span>{p.emoji}</span> {p.label}
+                </div>
+                <div className="font-body text-xs" style={{ color: "rgba(255,255,255,0.8)" }}>
+                  {p.desc}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-2 mt-6">
+          {CATEGORY_PHOTOS.map((p, i) => (
+            <button
+              key={p.label}
+              onClick={() => scrollToIndex(i)}
+              aria-label={`Go to ${p.label}`}
+              className="rounded-full transition-all"
+              style={{
+                width: i === activeIndex ? "22px" : "8px",
+                height: "8px",
+                backgroundColor: i === activeIndex ? C.blue : C.paperDim,
+              }}
+            />
           ))}
         </div>
       </div>
