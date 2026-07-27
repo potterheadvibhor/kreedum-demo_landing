@@ -595,6 +595,10 @@ function ContactForm() {
       newErrors.phone =
         "Please enter a valid 10-digit Indian mobile number.";
     }
+    
+    if (!form.inquiryType) {
+  newErrors.inquiryType = "Please select an inquiry type.";
+}
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -603,12 +607,12 @@ function ContactForm() {
 
     setErrors({});
 
-    const text =
-`New Contact Request
+const text = `New Contact Request
 
 Name: ${form.name}
 Phone: ${form.phone}
 ${form.email ? `Email: ${form.email}\n` : ""}Inquiry Type: ${form.inquiryType}
+
 Message:
 ${form.message}`;
 
@@ -768,12 +772,13 @@ ${form.message}`;
     className="font-mono text-xs uppercase tracking-wide block mb-2"
     style={{ color: "rgba(255,255,255,0.6)" }}
   >
-    Priority
+    Inquiry Type
   </label>
 
   <select
-    name="priority"
-    value={form.priority}
+    required
+    name="inquiryType"
+    value={form.inquiryType}
     onChange={handleChange}
     className="w-full px-4 py-3 rounded-lg font-body text-sm kr-focus"
     style={{
@@ -781,7 +786,8 @@ ${form.message}`;
       color: C.navy,
     }}
   >
-   <option value="General Inquiry">General Inquiry</option>
+    <option value="">Select Inquiry Type</option>
+    <option value="General Inquiry">General Inquiry</option>
     <option value="Product Information">Product Information</option>
     <option value="Retail Order">Retail Order</option>
     <option value="Bulk Order">Bulk Order</option>
