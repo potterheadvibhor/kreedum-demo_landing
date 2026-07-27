@@ -540,7 +540,6 @@ function Locations() {
           ))}
         </div>
         <p className="font-body text-xs mt-6" style={{ color: C.slateLight }}>
-          Note: full details for the second store are placeholders — share the exact address, phone, and hours and this card will be updated.
         </p>
       </div>
     </section>
@@ -559,7 +558,7 @@ function ContactForm() {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const WHATSAPP_NUMBER = "917084144623"; // Include country code
+  const WHATSAPP_NUMBER = "7080407862"; // Include country code
 
   const handleChange = (e) => {
     const { name, value } = e.target;
