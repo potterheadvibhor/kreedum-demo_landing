@@ -482,6 +482,13 @@ function Locations() {
       rating: "4.7★ · 1,600+ reviews",
     },
   ];
+  const firstStoreAddress = stores[0].address;
+  const storesWithDirections = stores.map((s) => ({
+    ...s,
+    // Second store's address is still unconfirmed, so point both buttons
+    // to the first (confirmed) store's location for now.
+    directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(firstStoreAddress)}`,
+  }));
   return (
     <section id="locations" className="py-24 md:py-32" style={{ backgroundColor: C.paper }}>
       <div className="max-w-6xl mx-auto px-6">
@@ -495,7 +502,7 @@ function Locations() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {stores.map((s) => (
+          {storesWithDirections.map((s) => (
             <div key={s.name} className="p-8 rounded-2xl" style={{ backgroundColor: C.white, boxShadow: "0 1px 3px rgba(14,26,61,0.06)" }}>
               <div className="flex items-start justify-between mb-4">
                 <div>
@@ -517,6 +524,18 @@ function Locations() {
                 <p>{s.phone}</p>
                 <p>{s.hours}</p>
               </div>
+              <a
+                href={s.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wide px-4 py-2.5 rounded-full transition-opacity hover:opacity-80"
+                style={{ backgroundColor: C.blue, color: C.white }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+                </svg>
+                Get Directions
+              </a>
             </div>
           ))}
         </div>
@@ -528,45 +547,126 @@ function Locations() {
   );
 }
 
+
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const WHATSAPP_NUMBER = "917084144623"; // Include country code
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === "phone") {
+      const phone = value.replace(/\D/g, "").slice(0, 10);
+
+      setForm((prev) => ({
+        ...prev,
+        phone,
+      }));
+
+      setErrors((prev) => ({
+        ...prev,
+        phone: "",
+      }));
+
+      return;
+    }
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // NOTE: Not yet wired to an email service.
-    // Hook this up to EmailJS, Formspree, or a backend endpoint later.
-    console.log("Form submitted (not yet sent anywhere):", form);
+
+    const newErrors = {};
+
+    if (!/^[6-9]\d{9}$/.test(form.phone)) {
+      newErrors.phone =
+        "Please enter a valid 10-digit Indian mobile number.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+
+    const text =
+      `Hi, I'm ${form.name}.\n` +
+      `Email: ${form.email}\n` +
+      `Phone: ${form.phone}\n` +
+      `Message: ${form.message}`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      text
+    )}`;
+
+    window.open(url, "_blank", "noopener,noreferrer");
     setSent(true);
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 diag-top overflow-hidden" style={{ backgroundColor: C.navy }}>
+    <section
+      id="contact"
+      className="relative py-24 md:py-32 diag-top overflow-hidden"
+      style={{ backgroundColor: C.navy }}
+    >
       <div className="relative max-w-3xl mx-auto px-6">
         <div className="text-center mb-14">
-          <div className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: "#8FADFF" }}>
+          <div
+            className="font-mono text-xs tracking-widest uppercase mb-4"
+            style={{ color: "#8FADFF" }}
+          >
             Get In Touch
           </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl mb-4" style={{ color: C.white }}>
+
+          <h2
+            className="font-display font-bold text-3xl md:text-4xl mb-4"
+            style={{ color: C.white }}
+          >
             Tell us what you're looking for.
           </h2>
-          <p className="font-body text-base" style={{ color: "rgba(255,255,255,0.7)" }}>
+
+          <p
+            className="font-body text-base"
+            style={{ color: "rgba(255,255,255,0.7)" }}
+          >
             Retail enquiry or institutional order — we'll get back to you.
           </p>
         </div>
 
         {sent ? (
-          <div className="text-center p-10 rounded-2xl" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
-            <p className="font-display font-semibold text-xl mb-2" style={{ color: C.white }}>
-              Thanks — message noted.
+          <div
+            className="text-center p-10 rounded-2xl"
+            style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
+          >
+            <p
+              className="font-display font-semibold text-xl mb-2"
+              style={{ color: C.white }}
+            >
+              Opening WhatsApp…
             </p>
-            <p className="font-body text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
-              (This form isn't wired to send email yet — see the note below.)
+
+            <p
+              className="font-body text-sm"
+              style={{ color: "rgba(255,255,255,0.65)" }}
+            >
+              If it didn't open automatically, check your browser's pop-up
+              blocker, or message us directly at +91 70841 44623.
             </p>
+
             <button
               onClick={() => setSent(false)}
               className="mt-6 font-body text-sm font-semibold px-6 py-2.5 rounded-full kr-focus"
@@ -576,12 +676,20 @@ function ContactForm() {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="grid gap-5 p-8 md:p-10 rounded-2xl" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+          <form
+            onSubmit={handleSubmit}
+            className="grid gap-5 p-8 md:p-10 rounded-2xl"
+            style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
+          >
             <div className="grid md:grid-cols-2 gap-5">
               <div>
-                <label className="font-mono text-xs uppercase tracking-wide block mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+                <label
+                  className="font-mono text-xs uppercase tracking-wide block mb-2"
+                  style={{ color: "rgba(255,255,255,0.6)" }}
+                >
                   Name
                 </label>
+
                 <input
                   required
                   name="name"
@@ -589,44 +697,78 @@ function ContactForm() {
                   onChange={handleChange}
                   type="text"
                   className="w-full px-4 py-3 rounded-lg font-body text-sm kr-focus"
-                  style={{ backgroundColor: "rgba(255,255,255,0.95)", color: C.navy }}
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.95)",
+                    color: C.navy,
+                  }}
                   placeholder="Your name"
                 />
               </div>
+
               <div>
-                <label className="font-mono text-xs uppercase tracking-wide block mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+                <label
+                  className="font-mono text-xs uppercase tracking-wide block mb-2"
+                  style={{ color: "rgba(255,255,255,0.6)" }}
+                >
                   Phone
                 </label>
+
                 <input
+                  required
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
                   type="tel"
+                  inputMode="numeric"
+                  maxLength={10}
+                  pattern="[6-9]{1}[0-9]{9}"
+                  title="Enter a valid 10-digit Indian mobile number"
                   className="w-full px-4 py-3 rounded-lg font-body text-sm kr-focus"
-                  style={{ backgroundColor: "rgba(255,255,255,0.95)", color: C.navy }}
-                  placeholder="Optional"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.95)",
+                    color: C.navy,
+                  }}
+                  placeholder="9876543210"
                 />
+
+                {errors.phone && (
+                  <p className="mt-2 text-sm text-red-400">
+                    {errors.phone}
+                  </p>
+                )}
               </div>
             </div>
+
             <div>
-              <label className="font-mono text-xs uppercase tracking-wide block mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+              <label
+                className="font-mono text-xs uppercase tracking-wide block mb-2"
+                style={{ color: "rgba(255,255,255,0.6)" }}
+              >
                 Email
               </label>
+
               <input
-                required
                 name="email"
                 value={form.email}
                 onChange={handleChange}
                 type="email"
                 className="w-full px-4 py-3 rounded-lg font-body text-sm kr-focus"
-                style={{ backgroundColor: "rgba(255,255,255,0.95)", color: C.navy }}
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.95)",
+                  color: C.navy,
+                }}
                 placeholder="you@example.com"
               />
             </div>
+
             <div>
-              <label className="font-mono text-xs uppercase tracking-wide block mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+              <label
+                className="font-mono text-xs uppercase tracking-wide block mb-2"
+                style={{ color: "rgba(255,255,255,0.6)" }}
+              >
                 Message
               </label>
+
               <textarea
                 required
                 name="message"
@@ -634,27 +776,42 @@ function ContactForm() {
                 onChange={handleChange}
                 rows={4}
                 className="w-full px-4 py-3 rounded-lg font-body text-sm kr-focus resize-none"
-                style={{ backgroundColor: "rgba(255,255,255,0.95)", color: C.navy }}
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.95)",
+                  color: C.navy,
+                }}
                 placeholder="What are you looking for?"
               />
             </div>
+
             <button
               type="submit"
-              className="font-body font-semibold text-sm px-7 py-3.5 rounded-full kr-focus transition-transform hover:scale-105 justify-self-start"
-              style={{ backgroundColor: C.blue, color: C.white }}
+              className="font-body font-semibold text-sm px-7 py-3.5 rounded-full kr-focus transition-transform hover:scale-105 justify-self-start inline-flex items-center gap-2"
+              style={{
+                backgroundColor: "#25D366",
+                color: "#08331C",
+              }}
             >
-              Send Message
+              {/* Your WhatsApp SVG */}
+              Message us on WhatsApp
             </button>
           </form>
         )}
 
-        <p className="font-mono text-xs text-center mt-6" style={{ color: "rgba(255,255,255,0.4)" }}>
-          Form UI only — email delivery not yet connected.
+        <p
+          className="font-mono text-xs text-center mt-6"
+          style={{ color: "rgba(255,255,255,0.4)" }}
+        >
+          Submitting opens a pre-filled WhatsApp chat — no email account
+          needed.
         </p>
       </div>
     </section>
   );
 }
+
+
+
 
 function Footer() {
   return (
@@ -686,7 +843,7 @@ export default function KreedumSportsLanding() {
       <Infrastructure />
       <Gallery />
       <Locations />
-      <ContactForm />
+      <ContactForm/>
       <Footer />
     </div>
   );
