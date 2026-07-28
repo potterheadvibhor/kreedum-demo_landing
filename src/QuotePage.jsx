@@ -404,7 +404,7 @@ ${form.message ? `\nMessage:\n${form.message}` : ""}`;
 
               <button
                 type="submit"
-                className="font-body font-semibold text-sm px-7 py-3.5 rounded-full kr-focus transition-transform hover:scale-105 justify-self-start inline-flex items-center gap-2"
+                className="font-body font-semibold text-sm px-7 py-3.5 rounded-full kr-focus transition-transform hover:scale-105 justify-self-center inline-flex items-center gap-2"
                 style={{ backgroundColor: "#25D366", color: "#08331C" }}
               >
                 Get my quote on WhatsApp

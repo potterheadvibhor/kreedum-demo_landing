@@ -54,7 +54,7 @@ const PHONE_NUMBER_DISPLAY = "+91 70804 07862";
 const PHONE_NUMBER_TEL = "++917080407862";
 
 const NAV_LINKS = [
-  { id: "about", label: "About" },
+  // { id: "about", label: "About" },
   { id: "products", label: "Products" },
   { id: "infrastructure", label: "Infrastructure" },
   { id: "gallery", label: "Inside Kreedum Sports" },
@@ -86,8 +86,14 @@ export function GlobalStyle() {
         clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
       }
       .diag-top {
-        clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
-      }
+  clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (max-width: 768px) {
+  .diag-top {
+    clip-path: none;
+  }
+}
       .diag-card {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
@@ -716,7 +722,7 @@ function Locations() {
     directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(firstStoreAddress)}`,
   }));
   return (
-    <section id="locations" className="py-24 md:py-32" style={{ backgroundColor: C.paper }}>
+    <section id="locations" className="pt-16 pb-10 md:pt-24 md:pb-16" style={{ backgroundColor: C.paper }}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-xl mb-14">
           <div className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: C.blue }}>
@@ -765,8 +771,7 @@ function Locations() {
             </div>
           ))}
         </div>
-        <p className="font-body text-xs mt-6" style={{ color: C.slateLight }}>
-        </p>
+       
       </div>
     </section>
   );
@@ -1045,7 +1050,7 @@ ${form.message}`;
 
             <button
               type="submit"
-              className="font-body font-semibold text-sm px-7 py-3.5 rounded-full kr-focus transition-transform hover:scale-105 justify-self-start inline-flex items-center gap-2"
+              className="font-body font-semibold text-sm px-7 py-3.5 rounded-full kr-focus transition-transform hover:scale-105 justify-self-center inline-flex items-center gap-2"
               style={{
                 backgroundColor: "#25D366",
                 color: "#08331C",
