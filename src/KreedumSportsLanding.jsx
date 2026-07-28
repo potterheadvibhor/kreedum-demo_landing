@@ -50,14 +50,14 @@ const CATEGORY_PHOTOS = [
   { emoji: "👟", label: "Footwear", desc: "Sports shoes", src: PHOTOS.extra },
 ];
 
-const PHONE_NUMBER_DISPLAY = "+91 70804 07862";
-const PHONE_NUMBER_TEL = "++917080407862";
+const PHONE_NUMBER_DISPLAY = "91 70804 07862";
+const PHONE_NUMBER_TEL = "917080407862";
 
 const NAV_LINKS = [
   // { id: "about", label: "About" },
   { id: "products", label: "Products" },
   { id: "infrastructure", label: "Infrastructure" },
-  { id: "gallery", label: "Inside Kreedum Sports" },
+  { id: "gallery", label: "Gallery" },
   { id: "locations", label: "Locations" },
   { id: "contact", label: "Contact" },
 ];
@@ -146,7 +146,7 @@ function Nav() {
         boxShadow: scrolled ? "0 1px 0 rgba(14,26,61,0.08)" : "none",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
         <button
           onClick={() => scrollTo("home")}
           className="flex items-center gap-2 kr-focus"
@@ -702,7 +702,7 @@ function Locations() {
       tag: "Official Aerofit® Fitness Store",
       address: "Krishna Plaza, Nazirabad Road, Aminabad, Lucknow, UP 226018",
       phone: "+91 80819 79754",
-      hours: "10:30 AM – 9:00 PM (Tue till 5 PM, Thu till 7 PM)",
+      hours: "(Mon-Sun 10:30 AM – 9:00 PM) (Thu till 7 PM)",
       rating: "4.7★ · 1,600+ reviews",
     },
     {
@@ -710,7 +710,7 @@ function Locations() {
       tag: "General Sports Products",
       address: "Aminabad Market, Lucknow, UP — address to confirm",
       phone: "+91 80819 79754",
-      hours: "10:30 AM – 9:00 PM (Tue till 5 PM, Thu till 7 PM)",
+      hours: "(Mon-Sun 10:30 AM – 9:00 PM) (Thu till 7 PM)",
       rating: "4.7★ · 1,600+ reviews",
     },
   ];
