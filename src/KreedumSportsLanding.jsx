@@ -50,8 +50,11 @@ const CATEGORY_PHOTOS = [
   { emoji: "👟", label: "Footwear", desc: "Sports shoes", src: PHOTOS.extra },
 ];
 
+const PHONE_NUMBER_DISPLAY = "+91 70804 07862";
+const PHONE_NUMBER_TEL = "++917080407862";
+
 const NAV_LINKS = [
-  // { id: "about", label: "About" },
+  { id: "about", label: "About" },
   { id: "products", label: "Products" },
   { id: "infrastructure", label: "Infrastructure" },
   { id: "gallery", label: "Inside Kreedum Sports" },
@@ -105,6 +108,20 @@ export function GlobalStyle() {
   );
 }
 
+function PhoneIcon({ color }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.57 1 1 0 01-.25 1.02l-2.2 2.2z"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function Nav() {
   const scrolled = useScrolled();
   const [open, setOpen] = useState(false);
@@ -148,6 +165,14 @@ function Nav() {
               {l.label}
             </button>
           ))}
+          <a
+            href={`tel:${PHONE_NUMBER_TEL}`}
+            className="flex items-center gap-2 font-body text-sm font-medium kr-focus"
+            style={{ color: scrolled ? C.slate : "rgba(255,255,255,0.9)" }}
+          >
+            <PhoneIcon color={scrolled ? C.slate : "rgba(255,255,255,0.9)"} />
+            {PHONE_NUMBER_DISPLAY}
+          </a>
           <a
             href="#/quote"
             className="font-body text-sm font-semibold px-5 py-2.5 rounded-full kr-focus transition-transform hover:scale-105 border"
@@ -198,6 +223,14 @@ function Nav() {
               {l.label}
             </button>
           ))}
+          <a
+            href={`tel:${PHONE_NUMBER_TEL}`}
+            className="flex items-center gap-2 font-body text-base font-medium kr-focus"
+            style={{ color: C.navy }}
+          >
+            <PhoneIcon color={C.navy} />
+            {PHONE_NUMBER_DISPLAY}
+          </a>
           <a
             href="#/quote"
             className="font-body text-sm font-semibold px-5 py-3 rounded-full kr-focus text-center border"
