@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { C, LOGO_SRC, Footer } from "./KreedumSportsLanding.jsx";
 
-const WHATSAPP_NUMBER = "7084144623"; // Same number used by the main contact form
+const WHATSAPP_NUMBER = "7080407862"; // Same number used by the main contact form
 const PHONE_NUMBER_DISPLAY = "+91 70804 07862";
 const PHONE_NUMBER_TEL = "+917080407862";
 
