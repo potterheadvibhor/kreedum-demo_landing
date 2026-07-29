@@ -794,7 +794,7 @@ function ContactForm() {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const WHATSAPP_NUMBER = "7084144623"; // Include country code
+  const WHATSAPP_NUMBER = "7080407862"; // Include country code
 
   const handleChange = (e) => {
     const { name, value } = e.target;
