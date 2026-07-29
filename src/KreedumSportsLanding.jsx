@@ -500,7 +500,7 @@ function Infrastructure() {
       />
       <div className="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
         <div className="order-2 md:order-1">
-          <div className="diag-photo overflow-hidden rounded-2xl relative">
+          <div className="overflow-hidden rounded-2xl relative">
             {INFRA_PHOTOS.map((p, i) => (
               <img
                 key={p.alt}
