@@ -199,6 +199,7 @@ function Nav() {
           className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 kr-focus"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <span
             className="block w-6 h-0.5 rounded transition-transform"
@@ -217,42 +218,45 @@ function Nav() {
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden px-6 pb-6 flex flex-col gap-4" style={{ backgroundColor: C.white }}>
-          {NAV_LINKS.map((l) => (
-            <button
-              key={l.id}
-              onClick={() => scrollTo(l.id)}
-              className="font-body text-left text-base font-medium kr-focus"
-              style={{ color: C.navy }}
-            >
-              {l.label}
-            </button>
-          ))}
-          <a
-            href={`tel:${PHONE_NUMBER_TEL}`}
-            className="flex items-center gap-2 font-body text-base font-medium kr-focus"
+      <div
+        className={`md:hidden px-6 pb-6 flex flex-col gap-4 overflow-hidden transition-all duration-300 ease-out origin-top ${
+          open ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+        }`}
+        style={{ backgroundColor: C.white }}
+      >
+        {NAV_LINKS.map((l) => (
+          <button
+            key={l.id}
+            onClick={() => scrollTo(l.id)}
+            className="font-body text-left text-base font-medium kr-focus"
             style={{ color: C.navy }}
           >
-            <PhoneIcon color={C.navy} />
-            {PHONE_NUMBER_DISPLAY}
-          </a>
-          <a
-            href="#/quote"
-            className="font-body text-sm font-semibold px-5 py-3 rounded-full kr-focus text-center border"
-            style={{ borderColor: "rgba(14,26,61,0.2)", color: C.navy }}
-          >
-            Get a Quote
-          </a>
-          <button
-            onClick={() => scrollTo("contact")}
-            className="font-body text-sm font-semibold px-5 py-3 rounded-full kr-focus text-center"
-            style={{ backgroundColor: C.blue, color: C.white }}
-          >
-            Get in Touch
+            {l.label}
           </button>
-        </div>
-      )}
+        ))}
+        <a
+          href={`tel:${PHONE_NUMBER_TEL}`}
+          className="flex items-center gap-2 font-body text-base font-medium kr-focus"
+          style={{ color: C.navy }}
+        >
+          <PhoneIcon color={C.navy} />
+          {PHONE_NUMBER_DISPLAY}
+        </a>
+        <a
+          href="#/quote"
+          className="font-body text-sm font-semibold px-5 py-3 rounded-full kr-focus text-center border"
+          style={{ borderColor: "rgba(14,26,61,0.2)", color: C.navy }}
+        >
+          Get a Quote
+        </a>
+        <button
+          onClick={() => scrollTo("contact")}
+          className="font-body text-sm font-semibold px-5 py-3 rounded-full kr-focus text-center"
+          style={{ backgroundColor: C.blue, color: C.white }}
+        >
+          Get in Touch
+        </button>
+      </div>
     </header>
   );
 }
