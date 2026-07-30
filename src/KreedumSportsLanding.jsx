@@ -411,25 +411,86 @@ function About() {
   );
 }
 
+// function Products() {
+//   const items = [
+//     {
+//       title: "Sports Equipment",
+//       desc: "Cricket, football, badminton, and gear across every major sport.",
+//     },
+//     {
+//       title: "Apparel & Footwear",
+//       desc: "Activewear and sports shoes for training, matches, and everyday wear.",
+//     },
+//     {
+//       title: "Fitness Machines & Accessories",
+//       desc: "Official Aerofit® dealer — treadmills, gym equipment, and home fitness gear.",
+//     },
+//     {
+//       title: "Sports Accessories",
+//       desc: "Nets, bags, protective gear, and the small essentials every player needs.",
+//     },
+//   ];
+//   return (
+//     <section id="products" className="py-24 md:py-32" style={{ backgroundColor: C.paper }}>
+//       <div className="max-w-6xl mx-auto px-6">
+//         <div className="max-w-xl mb-14">
+//           <div className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: C.blue }}>
+//             What We Stock
+//           </div>
+//           <h2 className="font-display font-bold text-3xl md:text-4xl" style={{ color: C.navy }}>
+//             Everything between the whistle and the finish line.
+//           </h2>
+//         </div>
+
+//         <div className="grid sm:grid-cols-2 gap-6">
+//           {items.map((item, i) => (
+//             <div
+//               key={item.title}
+//               className="p-8 rounded-2xl transition-transform hover:-translate-y-1"
+//               style={{ backgroundColor: C.white, boxShadow: "0 1px 3px rgba(14,26,61,0.06)" }}
+//             >
+//               <div className="font-mono text-xs mb-4" style={{ color: C.slateLight }}>
+//                 0{i + 1}
+//               </div>
+//               <h3 className="font-display font-semibold text-lg mb-2" style={{ color: C.navy }}>
+//                 {item.title}
+//               </h3>
+//               <p className="font-body text-sm leading-relaxed" style={{ color: C.slate }}>
+//                 {item.desc}
+//               </p>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+
 function Products() {
   const items = [
     {
       title: "Sports Equipment",
       desc: "Cricket, football, badminton, and gear across every major sport.",
+      img: "https://images.unsplash.com/photo-1562771242-a02d9090c90c",
     },
     {
       title: "Apparel & Footwear",
       desc: "Activewear and sports shoes for training, matches, and everyday wear.",
+      img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop",
     },
     {
       title: "Fitness Machines & Accessories",
       desc: "Official Aerofit® dealer — treadmills, gym equipment, and home fitness gear.",
+      img: "https://images.unsplash.com/photo-1623874514711-0f321325f318",
     },
     {
       title: "Sports Accessories",
       desc: "Nets, bags, protective gear, and the small essentials every player needs.",
+      img: "https://plus.unsplash.com/premium_photo-1682435576307-a71fec9529be",
     },
   ];
+
   return (
     <section id="products" className="py-24 md:py-32" style={{ backgroundColor: C.paper }}>
       <div className="max-w-6xl mx-auto px-6">
@@ -446,18 +507,36 @@ function Products() {
           {items.map((item, i) => (
             <div
               key={item.title}
-              className="p-8 rounded-2xl transition-transform hover:-translate-y-1"
-              style={{ backgroundColor: C.white, boxShadow: "0 1px 3px rgba(14,26,61,0.06)" }}
+              className="relative group overflow-hidden rounded-2xl h-72 flex flex-col justify-end p-8 transition-transform hover:-translate-y-1"
+              style={{ boxShadow: "0 1px 3px rgba(14,26,61,0.06)" }}
             >
-              <div className="font-mono text-xs mb-4" style={{ color: C.slateLight }}>
-                0{i + 1}
+              {/* Background image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                style={{ backgroundImage: `url(${item.img})` }}
+              />
+
+              {/* Gradient overlay for text legibility */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(14,26,61,0.92) 0%, rgba(14,26,61,0.55) 45%, rgba(14,26,61,0.05) 100%)",
+                }}
+              />
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="font-mono text-xs mb-3 text-white/60">
+                  0{i + 1}
+                </div>
+                <h3 className="font-display font-semibold text-lg mb-2 text-white">
+                  {item.title}
+                </h3>
+                <p className="font-body text-sm leading-relaxed text-white/80">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="font-display font-semibold text-lg mb-2" style={{ color: C.navy }}>
-                {item.title}
-              </h3>
-              <p className="font-body text-sm leading-relaxed" style={{ color: C.slate }}>
-                {item.desc}
-              </p>
             </div>
           ))}
         </div>
