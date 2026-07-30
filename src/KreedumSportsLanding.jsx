@@ -495,7 +495,7 @@ function Products() {
     {
       title: "Sports Equipment",
       desc: "Cricket, football, badminton, and gear across every major sport.",
-      img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=800&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1562771242-a02d9090c90c",
     },
     {
       title: "Apparel & Footwear",
@@ -505,12 +505,12 @@ function Products() {
     {
       title: "Fitness Machines & Accessories",
       desc: "Official Aerofit® dealer — treadmills, gym equipment, and home fitness gear.",
-      img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1623874514711-0f321325f318",
     },
     {
       title: "Sports Accessories",
       desc: "Nets, bags, protective gear, and the small essentials every player needs.",
-      img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
+      img: "https://plus.unsplash.com/premium_photo-1682435576307-a71fec9529be",
     },
   ];
 
