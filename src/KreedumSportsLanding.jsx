@@ -8,7 +8,7 @@ export const C = {
   navySoft: "#16234A",
   paper: "#F6F8FC",
   paperDim: "#EEF1F8",
-  tint: "#EAF0FF",
+  tint: "#EAF0FF",   
   slate: "#4B5568",
   slateLight: "#8A93A6",
   white: "#FFFFFF",
