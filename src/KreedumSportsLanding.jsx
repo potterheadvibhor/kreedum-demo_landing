@@ -1163,7 +1163,7 @@ export function Footer() {
           <SocialLinks />
         </div>
         <p className="font-body text-xs text-center md:text-right" style={{ color: "rgba(255,255,255,0.45)" }}>
-          © {new Date().getFullYear()} Kreedum International Private Limited. Aminabad, Lucknow.
+          © {new Date().getFullYear()} Kreedum International Private Limited
         </p>
       </div>
     </footer>
